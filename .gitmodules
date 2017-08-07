@@ -4,3 +4,6 @@
 [submodule "submodules/powerline"]
 	path = submodules/powerline
 	url = https://github.com/powerline/fonts.git
+[submodule "submodules/dein.vim"]
+	path = submodules/dein.vim
+	url = https://github.com/Shougo/dein.vim.git
