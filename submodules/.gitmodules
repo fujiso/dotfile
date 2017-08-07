@@ -1,3 +1,0 @@
-[submodule "dein.vim"]
-	path = dein.vim
-	url = https://github.com/Shougo/dein.vim.git
