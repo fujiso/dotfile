@@ -8,6 +8,11 @@ I'll add some settings if I feel like it.
 ### How to install
 
     $ git clone https://github.com/fujiso/dotfile.git
-    $ sh ./dotfile/setup.sh
+    $ cd ./dotfile
+    $ git submodule init
+    $ git submodule update
 
-and install submodules...(see each repository)  
+and install submodules...(see each repository) 
+
+    $ sh ./setup.sh
+ 
