@@ -1,5 +1,7 @@
 #!/bin/sh
-ln -sf ~/dotfiles/.vimrc ~/.vimrc
-ln -sf ~/dotfiles/colors ~/.vim
-ln -sf ~/dotfiles/.zshrc ~/.zshrc
-ln -sf ~/dotfiles/.zpreztorc ~/.zpreztorc
+# Execute at '$HOME/dotfiles'
+ln -si ~/dotfile/.vimrc ~/.vimrc
+ln -si ~/dotfile/colors ... ~/.vim/
+ln -si ~/dotfile/.zshrc ~/.zshrc
+ln -si ~/dotfile/.zpreztorc ~/.zpreztorc
+echo "setup finished!"

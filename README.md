@@ -13,9 +13,11 @@ I'll add some settings if I feel like it.
     $ git submodule update
 
 #### 2.install submodules...(see each repository) 
-* prezto  
+* prezto 
+ 
     $ zsh
     $ mv ./submodule/prezto/* ~/.zprezto/
+
 create the zsh configuration.  
     ```sh
     setopt EXTENDED_GLOB
@@ -24,8 +26,10 @@ create the zsh configuration.
     done
     ```
 set zsh as default shell  
+
     $ chsh -s /bin/zsh
 
-Finally,  
+#### 3.setup  
+
     $ sh ./setup.sh
  
