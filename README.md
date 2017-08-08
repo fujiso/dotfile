@@ -15,7 +15,7 @@ I'll add some settings if I feel like it.
 #### 2.install submodules...(see each repository) 
 * prezto 
  
-    $ zsh
+    $ zsh  
     $ mv ./submodule/prezto/* ~/.zprezto/
 
 create the zsh configuration.  
