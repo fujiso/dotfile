@@ -74,13 +74,17 @@ autocmd  FileType help,qf nnoremap <buffer> q <C-w>c
 if &compatible
     set nocompatible               " Be iMproved
 endif
-
 " Required:
-let s:dein_dir = expand('~/.vim/./bundles')
-let s:repos_dir = s:dein_dir . '/repos/github.com/Shougo/dein.vim'
-set runtimepath+=s:repos_dir
+let g:cache_home = empty($XDG_CACHE_HOME) ? expand('$HOME/.vim/') : $XDG_CACHE_HOME
+let g:config_home = empty($XDG_CONFIG_HOME) ? expand('$HOME/.vim/config') : $XDG_CONFIG_HOME
+
+" dein {{{
+let s:dein_cache_dir = g:cache_home . '/bundles'
+
+set runtimepath+=s:dein_cache_dir
 
 if &runtimepath !~# '/dein.vim'
+    let s:repos_dir = s:dein_cache_dir . '/repos/github.com/Shougo/dein.vim'
     if !isdirectory(s:repos_dir)
         execute '!git clone https://github.com/Shougo/dein.vim' s:repos_dir
     endif
@@ -88,28 +92,31 @@ if &runtimepath !~# '/dein.vim'
 endif
 
 " Required:
-if dein#load_state(s:dein_dir)
-    call dein#begin(s:dein_dir)
+if dein#load_state(s:dein_cache_dir)
+    call dein#begin(s:dein_cache_dir)
 
     " Let dein manage dein
     " Required:
-    call dein#add(s:repos_dir)
-    let s:toml_dir  = $HOME . '/.vim/bundles'
-    let s:toml = s:toml_dir . '/dein.toml'
-    let s:lazy_toml = s:toml_dir . '/dein_lazy.toml'
+    call dein#add(s:dein_chace_dir)
+    let s:toml = s:config_home . '/dein.toml'
+    let s:lazy_toml = s:config_home . '/dein_lazy.toml'
+    call dein#load_toml(s:toml, {'lazy' : 0}) 
+    call dein#load_toml(s:lazy_toml, {'lazy' : 1})
+    let g:syntastic_python_checkers = ['pyflakes', 'pep8']
     " Let dein manage dein
     " Add or remove your plugins here:
 
     call dein#add('Shougo/neosnippet.vim')
     call dein#add('Shougo/neosnippet-snippets')
-    call dein#add('scrooloose/syntastic', {'on_ft': 'python'})
     " You can specify revision/branch/tag.
     call dein#add('Shougo/vimshell', { 'rev': '3787e5' })
-    let g:syntastic_python_checkers = ['pyflakes', 'pep8']
+    call dein#add('scrooloose/syntastic', {'on_ft': 'python'})
+    call dain#add('davidhalter/jedi-vim', {'on_ft': 'python'})
     " Required:
     call dein#end()
     call dein#save_state()
 endif
+
 " If you want to install not installed plugins on
 " startup.
 if dein#check_install()
@@ -119,3 +126,4 @@ endif
 "コード編集設定
 filetype plugin indent on  "ファイル形式別プラグイン有効化
 syntax enable              "シンタックスハイライト
+
