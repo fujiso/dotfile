@@ -6,17 +6,17 @@ I'll add some settings if I feel like it.
 
 
 ### How to install
-#### 1.clone this repository
+#### 1.setup
+Clone this repository and execute setup.sh.
+'''shell
     $ git clone https://github.com/fujiso/dotfile.git
     $ cd ./dotfile
-    $ git submodule init
-    $ git submodule update
-
-#### 2.setup  
-
     $ sh ./setup.sh
+'''
 
-#### 3.install software
+You can install prezto(zsh framework) and anaconda3.
+
+#### 2.install software
 * powerline font
     Change commandline font config to powerline font in order not to occur misconversion.   
     I recommend "Meslo LG M Regular for Powerline"   
@@ -24,5 +24,9 @@ I'll add some settings if I feel like it.
     Fontdata is here:  
     '$ ./dotfile/submodules/powerline'
 
-#### 4. activate change
+#### 3. activate changes
     $ zsh
+
+#### get submodules
+    $ git submodule init
+    $ git submodule update
