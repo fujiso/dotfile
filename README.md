@@ -9,13 +9,11 @@ I'll add some settings if I feel like it.
 #### 1.setup
 Clone this repository and execute setup.sh.
 
-
-'''shell
+```shell
     $ git clone https://github.com/fujiso/dotfile.git
     $ cd ./dotfile
     $ sh ./setup.sh
-'''
-
+```
 
 You can install prezto(zsh framework) and anaconda3.
 
@@ -24,8 +22,8 @@ You can install prezto(zsh framework) and anaconda3.
     Change commandline font config to powerline font in order not to occur misconversion.   
     I recommend "Meslo LG M Regular for Powerline"   
 
-    Fontdata is here:  
-    '$ ./dotfile/submodules/powerline'
+    Fontdatas are here:  
+    ``$ ./dotfile/submodules/powerline``
 
 #### 3. activate changes
     $ zsh
