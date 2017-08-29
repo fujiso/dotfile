@@ -9,8 +9,8 @@ I'll add some settings if I feel like it.
 #### 1.clone this repository
     $ git clone https://github.com/fujiso/dotfile.git
     $ cd ./dotfile
-    $ git submodules init
-    $ git submodules update
+    $ git submodule init
+    $ git submodule update
 
 #### 2.setup  
 
@@ -19,9 +19,12 @@ I'll add some settings if I feel like it.
 #### 3.install software
 * anaconda  
     You can find latest version by tab-completion after typing "anaconda3-".
-    anaconda3-4.4.0 is available.(8/29/2017)
-    $ pyenv install anaconda3-(latest version)
+    anaconda3-4.4.0 is available.(8/29/2017)  
+
+
+    $ pyenv install anaconda3-(latest version) 
     $ pyenv global anaconda3-(latest version)
+
 
 * powerline font
     Change commandline font config to powerline font in order not to occur misconversion.
