@@ -8,11 +8,14 @@ I'll add some settings if I feel like it.
 ### How to install
 #### 1.setup
 Clone this repository and execute setup.sh.
+
+
 '''shell
     $ git clone https://github.com/fujiso/dotfile.git
     $ cd ./dotfile
     $ sh ./setup.sh
 '''
+
 
 You can install prezto(zsh framework) and anaconda3.
 
