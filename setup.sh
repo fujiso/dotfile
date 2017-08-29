@@ -8,6 +8,7 @@ ln -si ~/dotfile/colors ... ~/.vim/
 ln -si ~/dotfile/.zshrc ~/.zshrc
 ln -si ~/dotfile/.zpreztorc ~/.zpreztorc
 git clone https://github.com/pyenv/pyenv.git ~/.pyenv
+exec $SHELL -l
 latest=$(pyenv install -l | grep anaconda3 | tail -n 1)
 pyenv install $latest
 pyenv global $latest
