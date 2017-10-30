@@ -71,11 +71,49 @@ autocmd  QuickfixCmdPost make,grep,grepadd,vimgrep copen
 " QuickFixおよびHelpでは q でバッファを閉じる
 autocmd  FileType help,qf nnoremap <buffer> q <C-w>c
 
-" pythonテンプレート
-autocmd BufNewFile *.py 0r $HOME/.vim/template/python.txt
-
 if &compatible
     set nocompatible               " Be iMproved
+endif
+" Required:
+let s:dein_dir = expand('~/.vim/./bundles')
+let s:repos_dir = s:dein_dir . '/repos/github.com/Shougo/dein.vim'
+let s:config_home = expand('$HOME/.vim/config')
+
+set runtimepath+=/Users/fujikyu/.vim/.//repos/github.com/Shougo/dein.vim
+
+if &runtimepath !~# '/dein.vim'
+    if !isdirectory(s:repos_dir)
+        execute '!git clone https://github.com/Shougo/dein.vim' s:repos_dir
+    endif
+    execute 'set runtimepath^=' . fnamemodify(s:repos_dir, ':p')
+endif
+
+if dein#load_state('/Users/fujikyu/.vim/./')
+    call dein#begin('/Users/fujikyu/.vim/./')
+
+    " Let dein manage dein
+    let s:toml = s:config_home . '/dein.toml'
+    let s:lazy_toml = s:config_home . '/dein_lazy.toml'
+    call dein#load_toml(s:toml, {'lazy' : 0}) 
+    call dein#load_toml(s:lazy_toml, {'lazy' : 1})
+    let g:syntastic_python_checkers = ['pyflakes', 'pep8']
+    " Let dein manage dein
+    " Add or remove your plugins here:
+    call dein#add('/Users/fujikyu/.vim/.//repos/github.com/Shougo/dein.vim')
+    call dein#add('Shougo/neosnippet.vim')
+    call dein#add('Shougo/neosnippet-snippets')
+    " You can specify revision/branch/tag.
+    call dein#add('Shougo/vimshell', { 'rev': '3787e5' })
+    call dein#add('scrooloose/syntastic', {'on_ft': 'python'})
+    " call dein#add('davidhalter/jedi-vim', {'on_ft': 'python'})
+    call dein#end()
+    call dein#save_state()
+endif
+    
+" If you want to install not installed plugins on
+" startup.
+if dein#check_install()
+    call dein#install()
 endif
 
 "コード編集設定
