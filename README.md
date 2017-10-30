@@ -26,16 +26,17 @@ You can install prezto(zsh framework) and anaconda3.
     ``$ ./dotfile/submodules/powerline``  
 
 * dein.vim
-    customize and use extentions of vim.
-    i) install dein.vim
-'''
+    customize and use extentions of vim.  
+
+    ###### i) install dein.vim  
+```  
 $ curl https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh > installer.sh
 $ sh ./installer.sh {specify the installation directory}
-'''
+```
+    ##### ii) Add a postscript to your .vimrc like this.
+    {path to dein.vim directory} and {path to plugin base path directory} are shown when you run installer.sh.  
 
-    ii) Add a postscript to your .vimrc like this.  
-        {path to dein.vim directory} and {path to plugin base path directory} are shown when you run installer.sh.  
-'''
+```
 if &compatible
     set nocompatible
 endif
@@ -61,8 +62,7 @@ endif
 
 filetype plugin indent on
 syntax enable
-'''
-
+```  
 
 #### 3. activate changes
     $ zsh
