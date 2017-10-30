@@ -19,22 +19,24 @@ You can install prezto(zsh framework) and anaconda3.
 
 #### 2.install software
 * powerline font
-    Change commandline font config to powerline font in order not to occur misconversion.   
-    I recommend "Meslo LG M Regular for Powerline"   
+Change commandline font config to powerline font in order not to occur misconversion.   
+I recommend "Meslo LG M Regular for Powerline"   
 
-    Fontdatas are here:  
+Fontdatas are here:  
     ``$ ./dotfile/submodules/powerline``  
 
-* dein.vim
-    customize and use extentions of vim.  
+* dein.vim  
+customize and use extentions of vim.  
 
-    ###### i) install dein.vim  
+i) install dein.vim  
+ 
 ```  
 $ curl https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh > installer.sh
 $ sh ./installer.sh {specify the installation directory}
-```
-    ##### ii) Add a postscript to your .vimrc like this.
-    {path to dein.vim directory} and {path to plugin base path directory} are shown when you run installer.sh.  
+```  
+
+ii) Add a postscript to your .vimrc like this.  
+ {path to dein.vim directory} and {path to plugin base path directory} are shown when you run installer.sh.  
 
 ```
 if &compatible
