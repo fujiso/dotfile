@@ -7,10 +7,11 @@ then
     git clone --recursive https://github.com/sorin-ionescu/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"
 fi
 echo "link config file..."
-ln -si ~/dotfile/.vimrc ~/.vimrc
-ln -si ~/dotfile/colors ... ~/.vim/
-ln -si ~/dotfile/.zshrc ~/.zshrc
-ln -si ~/dotfile/.zpreztorc ~/.zpreztorc
+ln -si .vimrc ~/.vimrc
+ln -si colors ... ~/.vim/
+ln -si .zshrc ~/.zshrc
+ln -si .zpreztorc ~/.zpreztorc
+ln -si .tmux.conf ~/.tmux.conf
 if [ ! -e ~/.pyenv ]
 then
     echo "setup pyenv..."

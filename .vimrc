@@ -1,6 +1,31 @@
 set encoding=utf-8
 set fileencodings=utf-8,cp932,euc-jp
 
+
+nnoremap s <Nop>
+nnoremap sj <C-w>j
+nnoremap sk <C-w>k
+nnoremap sl <C-w>l
+nnoremap sh <C-w>h
+nnoremap sJ <C-w>J
+nnoremap sK <C-w>K
+nnoremap sL <C-w>L
+nnoremap sH <C-w>H
+nnoremap sn gt
+nnoremap sp gT
+nnoremap sr <C-w>r
+nnoremap s= <C-w>=
+nnoremap sw <C-w>w
+nnoremap so <C-w>_<C-w>|
+nnoremap sO <C-w>=
+nnoremap sN :<C-u>bn<CR>
+nnoremap sP :<C-u>bp<CR>
+nnoremap st :<C-u>tabnew<CR>
+nnoremap ss :<C-u>sp<CR>
+nnoremap sv :<C-u>vs<CR>
+nnoremap sq :<C-u>q<CR>
+nnoremap sQ :<C-u>bd<CR>
+
 "改行コード設定
 set fileformats=unix,dos,mac
 
@@ -71,14 +96,53 @@ autocmd  QuickfixCmdPost make,grep,grepadd,vimgrep copen
 " QuickFixおよびHelpでは q でバッファを閉じる
 autocmd  FileType help,qf nnoremap <buffer> q <C-w>c
 
-" pythonテンプレート
-autocmd BufNewFile *.py 0r $HOME/.vim/template/python.txt
-
 if &compatible
     set nocompatible               " Be iMproved
+endif
+
+" Required:
+let s:dein_dir = expand('~/.vim/./bundles')
+let s:repos_dir = s:dein_dir . '/repos/github.com/Shougo/dein.vim'
+set runtimepath+=s:repos_dir
+
+if &runtimepath !~# '/dein.vim'
+    if !isdirectory(s:repos_dir)
+        execute '!git clone https://github.com/Shougo/dein.vim' s:repos_dir
+    endif
+    execute 'set runtimepath^=' . fnamemodify(s:repos_dir, ':p')
+endif
+
+" Required:
+if dein#load_state(s:dein_dir)
+    call dein#begin(s:dein_dir)
+
+    " Let dein manage dein
+    " Required:
+    call dein#add(s:repos_dir)
+    let s:toml_dir  = $HOME . '/.vim/bundles'
+    let s:toml = s:toml_dir . '/dein.toml'
+    let s:lazy_toml = s:toml_dir . '/dein_lazy.toml'
+    " Let dein manage dein
+    " Add or remove your plugins here:
+
+    call dein#add('Shougo/neosnippet.vim')
+    call dein#add('Shougo/neosnippet-snippets')
+    "call dein#add('davidhalter/jedi-vim')
+    "let g:jedi#popup_on_dot = 0
+    "call dein#add('scrooloose/syntastic', {'on_ft': 'python'})
+    " You can specify revision/branch/tag.
+    call dein#add('Shougo/vimshell', { 'rev': '3787e5' })
+    "let g:syntastic_python_checkers = ['pyflakes', 'pep8']
+    " Required:
+    call dein#end()
+    call dein#save_state()
+endif
+" If you want to install not installed plugins on
+" startup.
+if dein#check_install()
+    call dein#install()
 endif
 
 "コード編集設定
 filetype plugin indent on  "ファイル形式別プラグイン有効化
 syntax enable              "シンタックスハイライト
-
