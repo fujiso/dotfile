@@ -137,6 +137,7 @@ Plug 'jacoborus/tender'
 Plug 'roxma/nvim-yarp'
 Plug 'roxma/vim-hug-neovim-rpc'
 
+Plug 'oka-h/yozakura.vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
@@ -158,7 +159,7 @@ set laststatus=2
 
 "背景色設定
 colorscheme tender
-"set t_Co=256
+set t_Co=256
 "コード編集設定
 filetype plugin indent on  "ファイル形式別プラグイン有効化
 syntax enable              "シンタックスハイライトneco-vim
