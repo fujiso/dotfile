@@ -14,6 +14,5 @@ bindkey -e
 #eval "$(pyenv virtualenv-init -)"
 
 alias vi='nvim'
-alias emacs='nvim'
 alias gpu='watch -n1 "hostname; nvidia-smi pmon -s um -c 1"'
-export PATH="/home/lr/fujiso/.linuxbrew/sbin:$PATH"
+alias imux='tmux attach || tmux new-session \; source-file ~/.tmux/imux'

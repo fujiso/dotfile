@@ -14,8 +14,8 @@ then
 fi
 
 echo "link config file..."
-DOT_FILES=(.vimrc .zshrc .zpreztorc .tmux.conf init.vim colors)
-DOT_DIR=($HOME $HOME $HOME $HOME $HOME/.config/nvim $HOME/.vim)
+DOT_FILES=(.vimrc .zshrc .zpreztorc .tmux.conf init.vim colors .tmux)
+DOT_DIR=($HOME $HOME $HOME $HOME $HOME/.config/nvim $HOME/.vim $HOME)
 for i in `seq 0 $((${#DOT_FILES[@]}-1))`
 do
     _DIR=${DOT_DIR[$i]}
@@ -62,6 +62,8 @@ if [ $? -eq 127 ]; then
 else
     echo "linuxbrew is already installed"
 fi
+
+#brew install emacs
 
 echo "setup nvim..."
 nvim -v > /dev/null 2>&1
