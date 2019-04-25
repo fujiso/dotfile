@@ -3,6 +3,7 @@
 # setup zsh
 # Execute at '$HOME/dotfiles'
 CONF=~/.zshrc
+CURRENT=`pwd`
 dir=~/.vim; [ ! -e $dir ] && mkdir -p $dir
 dir=~/.config/nvim; [ ! -e $dir ] && mkdir -p $dir
 
@@ -23,12 +24,34 @@ do
         echo "$_DIR/$_FILE is already exists. moved original file to $_DIR/$_FILE.cp"
         mv $_DIR/$_FILE $_DIR/$_FILE.cp
     fi
-    ln -sf ./$_FILE $_DIR/$_FILE
+    ln -sf $CURRENT/$_FILE $_DIR/$_FILE
 done
 
 
+
+echo "setup pyenv..."
+dddpyenv -v > /dev/null 2>&1
+if [ $? -eq 127 ]; then
+    echo "install pyenv..."
+    git clone https://github.com/pyenv/pyenv.git ~/.pyenv
+    git clone git://github.com/yyuu/pyenv-update.git ~/.pyenv/plugins/pyenv-update
+    echo 'export PYENV_ROOT="$HOME/.pyenv"' >> $CONF
+    echo 'export PATH="$PYENV_ROOT/bin:$PATH"' >> $CONF
+    echo 'eval "$(pyenv init -)"' >> $CONF
+    source $CONF
+else
+    echo "pyenv is already installed"
+fi
+
+
+echo "setup anaconda..."
+latest=$(pyenv install -l | grep anaconda3 | tail -n 1)
+echo "install latest anaconda version: $latest"
+PYTHON_CONFIGURE_OPTS="--enable-shared" pyenv install $latest
+pyenv global $latest
+
 echo "setup linuxbrew..."
-brew doctor > /dev/null 2>&1
+dddbrew > /dev/null 2>&1
 if [ $? -eq 127 ]; then
     echo "install lnuxbrew"
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install.sh)"
@@ -40,26 +63,6 @@ else
     echo "linuxbrew is already installed"
 fi
 
-echo "setup pyenv..."
-pyenv -v > /dev/null 2>&1
-if [ $? -eq 127 ]; then
-    echo "install pyenv..."
-    git clone https://github.com/pyenv/pyenv.git ~/.pyenv
-    echo 'export PYENV_ROOT="$HOME/.pyenv"' >> $CONF
-    echo 'export PATH="$PYENV_ROOT/bin:$PATH"' >> $CONF
-    echo 'eval "$(pyenv init -)"' >> $CONF
-    source $CONF
-else
-    echo "pyenv is already installed"
-fi
-
-
-echo "setup anaconda..."
-latest=$(~/.pyenv/bin/pyenv install -l | grep anaconda3 | tail -n 1)
-echo "install latest anaconda version: $latest"
-~/.pyenv/bin/pyenv install $latest
-~/.pyenv/bin/pyenv global $latest
-
 echo "setup nvim..."
 nvim -v > /dev/null 2>&1
 if [ $? -eq 127 ]; then
@@ -67,11 +70,13 @@ if [ $? -eq 127 ]; then
     brew install neovim
 fi
 # vim-plug for vim
-curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+curl -fLo $HOME/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 # vim-plug for neovim
-curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-nvim +":PlugInstall" +:q +:q
-vim +":PlugInstall" +:q +:q
+curl -fLo $HOME/.nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+nvim +":PlugInstall" +:qall
+# vim +":PlugInstall" +:qall
+cd $HOME/.nvim/plugged/YouCompleteMe/
+python ./install.py
 
 echo "Setup finished!"
 echo "Please restart shell."
