@@ -22,12 +22,9 @@ Clone this repository and execute setup.sh.
 ```
 
 #### 2.install software
-* powerline font
+* [powerline font]((https://github.com/powerline/fonts/tree/master)  
 Change commandline font config to powerline font in order not to occur misconversion.   
 I recommend "Meslo LG M Regular for Powerline"   
-
-Fontdatas are here:  
-    ``$ ./dotfile/submodules/powerline``  
 
 
 #### 3. activate changes
