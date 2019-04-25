@@ -160,14 +160,14 @@ let g:jedi#usages_command = "<leader>n"
 let g:jedi#completions_command = "<C-Space>"
 let g:jedi#rename_command = "<leader>r"
 
-"Plug 'w0rp/ale'
-"let g:ale_sign_column_always = 1
-"let g:airline#extensions#ale#enabled = 1
+Plug 'w0rp/ale'
+let g:ale_sign_column_always = 1
+let g:airline#extensions#ale#enabled = 1
 "autocmd vimenter* highlight clear ALEWarningSign
 " Check Python files with flake8 and pylint.
-"let b:ale_linters = {
-"            \ 'python':['pylint'],
-"            \}
+let b:ale_linters = {
+            \ 'python':['flake8'],
+            \}
 
 " Fix Python files with autopep8 and yapf.
 " let b:ale_fixers = ['autopep8', 'yapf']

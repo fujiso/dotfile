@@ -16,3 +16,4 @@ bindkey -e
 alias vi='nvim'
 alias emacs='nvim'
 alias gpu='watch -n1 "hostname; nvidia-smi pmon -s um -c 1"'
+export PATH="/home/lr/fujiso/.linuxbrew/sbin:$PATH"
