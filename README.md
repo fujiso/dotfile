@@ -26,10 +26,3 @@ Clone this repository and execute setup.sh.
 Change commandline font config to powerline font in order not to occur misconversion.   
 I recommend "Meslo LG M Regular for Powerline"   
 
-
-#### 3. activate changes
-    $ zsh
-
-#### get submodules
-    $ git submodule init
-    $ git submodule update
