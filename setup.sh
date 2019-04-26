@@ -24,7 +24,7 @@ do
     _DIR=${DOT_DIR[$i]}
     _FILE=${DOT_FILES[$i]}
     if [ -e $_DIR/$_FILE ]; then
-        echo "$_DIR/$_FILE is already exists. moved original file to $_DIR/$_FILE.cp"
+        echo "$_DIR/$_FILE already exists. moved original file to $_DIR/$_FILE.cp"
         mv $_DIR/$_FILE $_DIR/$_FILE.cp
     fi
     ln -sf $CURRENT/$_FILE $_DIR/$_FILE
