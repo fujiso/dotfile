@@ -33,7 +33,7 @@ done
 
 
 echo "setup pyenv..."
-dddpyenv -v > /dev/null 2>&1
+pyenv -v > /dev/null 2>&1
 if [ $? -eq 127 ]; then
     echo "install pyenv..."
     git clone https://github.com/pyenv/pyenv.git ~/.pyenv
@@ -54,7 +54,7 @@ PYTHON_CONFIGURE_OPTS="--enable-shared" pyenv install $latest
 pyenv global $latest
 
 echo "setup linuxbrew..."
-dddbrew > /dev/null 2>&1
+brew > /dev/null 2>&1
 if [ $? -eq 127 ]; then
     echo "install lnuxbrew"
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install.sh)"
