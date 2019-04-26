@@ -11,7 +11,7 @@ echo "setup prezto..."
 if [ ! -e ~/.zprezto ]
 then
     git clone --recursive https://github.com/sorin-ionescu/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"
-    for rcfile in ${ZDOTDIR:-$HOME}/.zprezto/runcoms/^README.md(.N); do
+    for rcfile in `ls $HOME/.zprezto/runcoms/ | egrep -v "^README.md"`; do
         ln -s "$rcfile" "${ZDOTDIR:-$HOME}/.${rcfile:t}"
     done
 fi
