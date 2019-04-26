@@ -79,10 +79,18 @@ fi
 curl -fLo $HOME/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 # vim-plug for neovim
 curl -fLo $HOME/.nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-nvim +":PlugInstall" +:qall
-# vim +":PlugInstall" +:qall
-cd $HOME/.nvim/plugged/YouCompleteMe/
-python ./install.py
+
+nvim -v > /dev/null 2>&1
+if [ $? -eq 127 ]; then
+    nvim +":PlugInstall" +:qall
+    cd $HOME/.nvim/plugged/YouCompleteMe/
+    python ./install.py
+else
+    vim +":PlugInstall" +:qall
+    cd $HOME/.nvim/plugged/YouCompleteMe/
+    python ./install.py
+fi
+
 
 echo "Setup finished!"
 echo "Please restart shell."
