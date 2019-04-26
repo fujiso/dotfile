@@ -82,11 +82,11 @@ curl -fLo $HOME/.nvim/site/autoload/plug.vim --create-dirs https://raw.githubuse
 
 nvim -v > /dev/null 2>&1
 if [ $? -eq 127 ]; then
-    nvim +":PlugInstall" +:qall
+    vim +":PlugInstall" +:qall
     cd $HOME/.nvim/plugged/YouCompleteMe/
     python ./install.py
 else
-    vim +":PlugInstall" +:qall
+    nvim +":PlugInstall" +:qall
     cd $HOME/.nvim/plugged/YouCompleteMe/
     python ./install.py
 fi
