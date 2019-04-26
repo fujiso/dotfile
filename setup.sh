@@ -50,7 +50,8 @@ fi
 echo "setup anaconda..."
 latest=$(pyenv install -l | grep anaconda3 | tail -n 1)
 echo "install latest anaconda version: $latest"
-PYTHON_CONFIGURE_OPTS="--enable-shared" pyenv install $latest
+#PYTHON_CONFIGURE_OPTS="--enable-shared" pyenv install $latest
+pyenv install $latest
 pyenv global $latest
 
 echo "setup linuxbrew..."
