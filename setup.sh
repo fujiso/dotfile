@@ -17,8 +17,8 @@ then
 fi
 
 echo "link config file..."
-DOT_FILES=(.vimrc .zshrc .zpreztorc .tmux.conf init.vim colors .tmux)
-DOT_DIR=($HOME $HOME $HOME $HOME $HOME/.config/nvim $HOME/.vim $HOME)
+DOT_FILES=(.vimrc .zpreztorc .tmux.conf init.vim colors .tmux)
+DOT_DIR=($HOME $HOME $HOME $HOME/.config/nvim $HOME/.vim $HOME)
 for i in `seq 0 $((${#DOT_FILES[@]}-1))`
 do
     _DIR=${DOT_DIR[$i]}
@@ -30,6 +30,7 @@ do
     ln -sf $CURRENT/$_FILE $_DIR/$_FILE
 done
 
+echo "alias imux='tmux attach || tmux new-session \; source-file ~/.tmux/imux'" >>$CONF
 
 
 echo "setup pyenv..."
