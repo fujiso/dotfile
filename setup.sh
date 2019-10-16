@@ -18,15 +18,20 @@ then
 fi
 
 echo "link config file..."
-DOT_FILES=(.vimrc .zpreztorc .tmux.conf init.vim colors .tmux)
-DOT_DIR=($HOME $HOME $HOME $HOME/.config/nvim $HOME/.vim $HOME)
+VIM=$HOME/.config/nvim/autoload
+DOT_FILES=(.vimrc .zpreztorc .tmux.conf init.vim colors .tmux vim-setting)
+DOT_DIR=($HOME $HOME $HOME $HOME/.config/nvim $HOME/.vim $HOME $VIM)
 for i in `seq 0 $((${#DOT_FILES[@]}-1))`
 do
     _DIR=${DOT_DIR[$i]}
     _FILE=${DOT_FILES[$i]}
     if [ -e $_DIR/$_FILE ]; then
-        echo "$_DIR/$_FILE already exists. moved original file to $_DIR/$_FILE.cp"
-        mv $_DIR/$_FILE $_DIR/$_FILE.cp
+        if [ $_FILE = ".vimrc" ] || [ $_FILE = "init.vim" ]; then
+            mv $_DIR/$_FILE $_DIR/$_FILE.cp
+        else
+            echo "$_DIR/$_FILE already exists. moved original file to $_DIR/$_FILE.cp"
+            mv $_DIR/$_FILE $_DIR/$_FILE.cp
+        fi
     fi
     ln -sf $CURRENT/$_FILE $_DIR/$_FILE
 done

@@ -6,7 +6,7 @@ split-window -v
 select-pane -t 1
 
 # メインとなるウィンドウの高さを35行に設定
-setw main-pane-height 40
+setw main-pane-height 35
 # 上下分割レイアウトを反映
 select-layout main-horizontal
 #display-panes
