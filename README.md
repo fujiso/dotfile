@@ -1,5 +1,4 @@
 ## Dotfile
-🚧 Now I am reimplementing `setup.sh`, please ask me the progress if you want to use this dotfile.
 
 ### About
 Very simple setup to use zsh + vim for python.  

@@ -18,6 +18,7 @@ let g:ycm_key_list_select_completion = ['<TAB>']
 let g:ycm_key_list_previous_completion = ['<S-TAB>']
 let g:ycm_key_list_stop_completion = ['<Enter>', '<C-y>']
 set splitbelow
+Plug 'zxqfl/TabNine'
 "Plug 'zchee/deoplete-jedi'
 Plug 'davidhalter/jedi-vim'
 "let g:jedi#use_tabs_not_buffers = 1
