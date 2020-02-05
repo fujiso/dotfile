@@ -18,9 +18,9 @@ then
 fi
 
 echo "link config file..."
-VIM=$HOME/.config/nvim/autoload
+VIM=$HOME/.config/nvim/autoload; [ ! -e $VIM ] && mkdir -p $VIM
 DOT_FILES=(.vimrc .zpreztorc .tmux.conf init.vim colors .tmux vim-setting)
-DOT_DIR=($HOME $HOME $HOME $HOME/.config/nvim $HOME/.vim $HOME $VIM)
+DOT_DIR=($HOME $HOME $HOME $HOME/.config/nvim $HOME/.vim $HOME $HOME/.config/nvim)
 for i in `seq 0 $((${#DOT_FILES[@]}-1))`
 do
     _DIR=${DOT_DIR[$i]}
@@ -93,6 +93,7 @@ if [ $? -eq 127 ]; then
     cd $HOME/.nvim/plugged/YouCompleteMe/
     python ./install.py
 else
+    vim +":PlugInstall" +:qall
     nvim +":PlugInstall" +:qall
     cd $HOME/.nvim/plugged/YouCompleteMe/
     python ./install.py
