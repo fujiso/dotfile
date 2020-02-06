@@ -18,9 +18,9 @@ then
 fi
 
 echo "link config file..."
-VIM=$HOME/.config/nvim/autoload; [ ! -e $VIM ] && mkdir -p $VIM
-DOT_FILES=(.vimrc .zpreztorc .tmux.conf init.vim colors .tmux vim-setting)
-DOT_DIR=($HOME $HOME $HOME $HOME/.config/nvim $HOME/.vim $HOME $HOME/.config/nvim)
+VIM=$HOME/.config/nvim/autoload
+DOT_FILES=(.vimrc .zpreztorc .tmux.conf init.vim colors .tmux)
+DOT_DIR=($HOME $HOME $HOME $HOME/.config/nvim $HOME/.vim $HOME)
 for i in `seq 0 $((${#DOT_FILES[@]}-1))`
 do
     _DIR=${DOT_DIR[$i]}
@@ -35,6 +35,8 @@ do
     fi
     ln -sf $CURRENT/$_FILE $_DIR/$_FILE
 done
+ln -sf $CURRENT/vim-setting $VIM
+ln -sf $CURRENT/vim-setting $HOME/.vim-setting
 
 echo "alias imux='tmux attach || tmux new-session \; source-file ~/.tmux/imux'" >>$CONF
 
